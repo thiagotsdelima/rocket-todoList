@@ -8,12 +8,14 @@
 }
 
 :root {
+  --ff--primary: 'Inter', sans-serif;
+  font-size: 16px; 
   scroll-behavior: smooth;
+
   --blue-dark: #1E6F9F;
   --blue: #4EA8DE;
   --purple-dark: #5E60CE;
   --purple: #8284FA;
-  
   
   --danger: #E25858;
   
@@ -32,5 +34,10 @@
 body {
   background-color: var(--background-600); 
   color: var(--danger); 
+}
 
+body, input, textarea, button, html{
+  font-family: var(--ff--primary);
+  font-weight: 400;
+  font-size: 1rem;
 }
