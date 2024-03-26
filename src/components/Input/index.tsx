@@ -1,4 +1,4 @@
-import styles from './input.module.css'
+import styles from './styles.module.css'
 
 
 export function Input({...rest }: React.InputHTMLAttributes<HTMLInputElement>) {
