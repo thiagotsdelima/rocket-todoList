@@ -4,14 +4,15 @@
 
   margin: 0 auto;
 }
-.aside .input,
-.aside .button {
-  flex: 1;
+
+aside {
+  margin-top: -30px;
+  display: flex;
+  align-items: center; 
+  gap: 1rem; 
+ 
 }
 
-.main + .main {
-  margin-top: 2rem;
-}
 
 .tasksList {
   display: flex;

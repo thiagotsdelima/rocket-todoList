@@ -24,6 +24,7 @@ export function App() {
   useEffect(() => {
     const count = tasks.reduce((total, task) => task.isChecked ? total + 1 : total, 0);
     setCheckedTasksCounter(count);
+    console.log("Atualizando tarefas concluídas:", count, "de", tasks.length);
   }, [tasks]);
 
   function handleAddTask() {
@@ -37,7 +38,11 @@ export function App() {
       isChecked: false,
     };
 
-    setTasks((state) => [...state, newTask]);
+    setTasks((state) => {
+      const newState = [...state, newTask];
+      console.log("Adicionando tarefa, novo estado:", newState);
+      return newState;
+    });
     setInputValue('');
   }
 
@@ -47,6 +52,7 @@ export function App() {
     }
 
     const filteredTasks = tasks.filter((task) => task.id !== id);
+    console.log(`Removendo tarefa ${id}, novo estado:`, filteredTasks);
     setTasks(filteredTasks);
   }
 
@@ -55,6 +61,7 @@ export function App() {
       task.id === id ? { ...task, isChecked: value } : task
     );
 
+    console.log(`Alterando status da tarefa ${id} para ${value ? 'concluída' : 'não concluída'}, novo estado:`, updatedTasks);
     setTasks(updatedTasks);
   }
 
@@ -64,11 +71,10 @@ export function App() {
       <div className={styles.content}>
         <aside>
           <Input
-            className={`${styles.container} ${styles.input}`}
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />
-          <Button  className={`${styles.container} ${styles.button}`} onClick={handleAddTask}>
+          <Button onClick={handleAddTask}>
             Criar
             <PlusCircle size={16} color="#f2f2f2" weight="bold" />
           </Button>

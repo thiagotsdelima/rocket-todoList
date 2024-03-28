@@ -1,7 +1,12 @@
 .container {
   padding: 4rem 1rem;
+  height: 244px; 
+  width: 700px; 
 
   border-top: 1px solid var(--gray-400);
+  border-right: none; 
+  border-bottom: none; 
+  border-left: none; 
   border-radius: 8px;
 
   display: flex;
@@ -12,7 +17,14 @@
   color: var(--gray-300);
 }
 
+
 .container p {
   display: flex;
   flex-direction: column;
+  color: var(--gray-300); 
+}
+
+.container p strong {
+  font-weight: bold; 
+  color: inherit; 
 }

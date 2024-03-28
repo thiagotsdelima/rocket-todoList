@@ -1,9 +1,9 @@
 import styles from './styles.module.css';
 import { Trash, Check } from '@phosphor-icons/react';
-import { task } from '../../App'; 
+import { Task } from '../../App'; 
 
 interface Props {
-  data: task; 
+  data: Task; 
   className?: string;
   taskCheck: ({ id, value }: { id: number; value: boolean }) => void;
   remove: (id: number) => void; 
@@ -19,17 +19,23 @@ export function ItemList({ data, remove, taskCheck, className }: Props) {
     remove(data.id);
   }
 
-  const wrapperCheckbox = data.isChecked ? styles.checkboxMarked : styles.checkboxDesabilitado; 
+  const wrapperCheckbox = data.isChecked ? styles.checkboxChecked : styles.checkboxUnchecked;
   const wrapperParagraphChecked = data.isChecked ? styles.wrapperParagraphMarked : ''; 
   return (
     <ul className={`${styles.container} ${className || ''}`}>
       <li>
-        <label htmlFor={`checkbox-${data.id}`} onClick={handleCheckedTasks}>
-          <input id={`checkbox-${data.id}`} readOnly type="checkbox" checked={data.isChecked} /> 
-          <span className={`${styles.checkbox} ${wrapperCheckbox}`}>
-            {data.isChecked && <Check size={12} />} 
-          </span>
-        </label>
+      <label htmlFor={`checkbox-${data.id}`}>
+        <input 
+          id={`checkbox-${data.id}`} 
+          type="checkbox" 
+          readOnly 
+          checked={data.isChecked} 
+          onClick={handleCheckedTasks} 
+        />
+        <span className={`${styles.checkbox} ${wrapperCheckbox}`}>
+          {data.isChecked && <Check size={12} color="white" />} 
+        </span>
+      </label>
         <p className={`${styles.paragraph} ${wrapperParagraphChecked}`}>{data.text}</p> 
         <button onClick={handleRemove}>
           <Trash size={16} color="#808080" />

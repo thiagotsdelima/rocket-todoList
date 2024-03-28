@@ -1,17 +1,22 @@
 .container {
-  display: flex;
-  flex: 1;
-
+ display: flex;
+ justify-content: space-between;
+  
+  margin-top: 64px;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .container aside {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
+ 
+  
   font-weight: bold;
+}
+.wrapperButton {
+  margin-left: -150px;
 }
 
 .container aside:first-child {
