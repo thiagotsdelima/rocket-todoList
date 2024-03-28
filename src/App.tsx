@@ -61,13 +61,14 @@ export function App() {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <div className={styles.wrapper}>
+      <div className={styles.content}>
         <aside>
           <Input
+            className={`${styles.container} ${styles.input}`}
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />
-          <Button onClick={handleAddTask}>
+          <Button  className={`${styles.container} ${styles.button}`} onClick={handleAddTask}>
             Criar
             <PlusCircle size={16} color="#f2f2f2" weight="bold" />
           </Button>

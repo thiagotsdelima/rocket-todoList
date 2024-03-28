@@ -1,1 +1,26 @@
+.content{
+  max-width: 46rem;
+  width: 100%;
 
+  margin: 0 auto;
+}
+.aside .input,
+.aside .button {
+  flex: 1;
+}
+
+.main + .main {
+  margin-top: 2rem;
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tasksList > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
