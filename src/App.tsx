@@ -70,32 +70,25 @@ export function App() {
       <Header />
       <div className={styles.content}>
         <aside>
-          <Input
-            onChange={(e) => setInputValue(e.target.value)}
-            value={inputValue}
-          />
-          <Button onClick={handleAddTask}>
-            Criar
-            <PlusCircle size={16} color="#f2f2f2" weight="bold" />
-          </Button>
+          <Input onChange={(e) => setInputValue(e.target.value)} value={inputValue} />
+          <Button onClick={handleAddTask}>Criar <PlusCircle size={16} color="#f2f2f2" weight="bold" /></Button>
         </aside>
         <main>
-            <HeaderList   
-            tasksCounter={tasks.length}
-            checkedTasksCounter={checkedTasksCounter}
-          />
-          {tasks.length > 0 ? (
-            tasks.map((task) => (
-              <ItemList
-                key={task.id}
-                data={task}
-                removeTask={() => handleRemove(task.id)}
-                toggleTaskStatus={(value) => handleTaskCheck(task.id, value)}
-              />
-            ))
-          ) : (
-            <TaskList />
-          )}
+        <HeaderList tasksCounter={tasks.length} checkedTasks={checkedTasksCounter} />
+        <div className={`${styles.taskListContainer} ${tasks.length > 0 ? styles.taskListContainerWithMargin : ''}`}>
+            {tasks.length > 0 ? (
+              tasks.map(task => (
+                <ItemList
+                  key={task.id}
+                  data={task}
+                  removeTask={() => handleRemove(task.id)}
+                  toggleTaskStatus={value => handleTaskCheck(task.id, value)}
+                />
+              ))
+            ) : (
+              <TaskList />
+            )}
+          </div>
         </main>
       </div>
     </div>

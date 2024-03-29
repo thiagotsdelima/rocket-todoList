@@ -22,8 +22,8 @@ export function ItemList({ data, remove, taskCheck, className }: Props) {
   const wrapperCheckbox = data.isChecked ? styles.checkboxChecked : styles.checkboxUnchecked;
   const wrapperParagraphChecked = data.isChecked ? styles.wrapperParagraphMarked : ''; 
   return (
-    <ul className={`${styles.container} ${className || ''}`}>
-      <li>
+    <div className={styles.container}>
+    <div>
       <label htmlFor={`checkbox-${data.id}`}>
         <input 
           id={`checkbox-${data.id}`} 
@@ -36,11 +36,11 @@ export function ItemList({ data, remove, taskCheck, className }: Props) {
           {data.isChecked && <Check size={12} color="white" />} 
         </span>
       </label>
+      </div>
         <p className={`${styles.paragraph} ${wrapperParagraphChecked}`}>{data.text}</p> 
         <button onClick={handleRemove}>
           <Trash size={16} color="#808080" />
         </button>
-      </li>
-    </ul>
+      </div>
   );
 }

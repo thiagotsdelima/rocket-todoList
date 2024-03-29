@@ -8,13 +8,17 @@ interface Props {
 
 export function HeaderList({tasksCounter, checkedTasks }: Props) {
 
+  const asideStyle = {
+    minWidth: tasksCounter > 0 ? '180px' : '150px',
+  };
+
   return (
     <header className={styles.container}>
-        <aside>
+        <aside style={asideStyle}>
           <p>Tarefas criadas</p>
           <span>{tasksCounter}</span>
         </aside>
-        <aside>
+        <aside style={asideStyle}>
           <p className={styles.wrapperButton}>Concluídas</p>
           <span>
             {tasksCounter === 0
@@ -22,6 +26,7 @@ export function HeaderList({tasksCounter, checkedTasks }: Props) {
               : `${checkedTasks || 0} de ${tasksCounter}`}
           </span>
         </aside>
-      </header>
+    </header>
   );
 }
+

@@ -4,7 +4,6 @@
   
   margin-top: 64px;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .container aside {
@@ -12,11 +11,7 @@
   align-items: center;
   gap: 0.5rem;
  
-  
   font-weight: bold;
-}
-.wrapperButton {
-  margin-left: -150px;
 }
 
 .container aside:first-child {
@@ -34,7 +29,8 @@
 .container aside span {
   padding: 2px 8px;
   border-radius: 16px;
-
+  
+  
   font-size: 0.75rem;
 
   color: var(--gray-200);
