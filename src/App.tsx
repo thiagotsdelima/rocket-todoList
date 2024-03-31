@@ -24,7 +24,6 @@ export function App() {
   useEffect(() => {
     const count = tasks.reduce((total, task) => task.isChecked ? total + 1 : total, 0);
     setCheckedTasksCounter(count);
-    console.log("Atualizando tarefas concluídas:", count, "de", tasks.length);
   }, [tasks]);
 
   function handleAddTask() {
@@ -33,37 +32,32 @@ export function App() {
     }
 
     const newTask: Task = {
-      id: new Date().getTime(), 
+      id: new Date().getTime(),
       text: inputValue,
       isChecked: false,
     };
 
-    setTasks((state) => {
-      const newState = [...state, newTask];
-      console.log("Adicionando tarefa, novo estado:", newState);
-      return newState;
-    });
+    setTasks((state) => [...state, newTask]);
     setInputValue('');
   }
 
-  function handleRemove(id: number) {
+  function handleRemoveTask(id: number) {
     if (!window.confirm('Deseja realmente remover esta tarefa?')) {
       return;
     }
 
     const filteredTasks = tasks.filter((task) => task.id !== id);
-    console.log(`Removendo tarefa ${id}, novo estado:`, filteredTasks);
     setTasks(filteredTasks);
   }
-
-  function handleTaskCheck(id: number, value: boolean) {
-    const updatedTasks = tasks.map((task) => 
+  function handleToggleTask({ id, value }: { id: number; value: boolean }) {
+    console.log(`Toggling task ${id} to ${value}`);
+    const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, isChecked: value } : task
     );
-
-    console.log(`Alterando status da tarefa ${id} para ${value ? 'concluída' : 'não concluída'}, novo estado:`, updatedTasks);
+  
     setTasks(updatedTasks);
-  }
+  }  
+  
 
   return (
     <div className={styles.wrapper}>
@@ -74,15 +68,15 @@ export function App() {
           <Button onClick={handleAddTask}>Criar <PlusCircle size={16} color="#f2f2f2" weight="bold" /></Button>
         </aside>
         <main>
-        <HeaderList tasksCounter={tasks.length} checkedTasks={checkedTasksCounter} />
-        <div className={`${styles.taskListContainer} ${tasks.length > 0 ? styles.taskListContainerWithMargin : ''}`}>
+          <HeaderList tasksCounter={tasks.length} checkedTasks={checkedTasksCounter} />
+          <div className={`${styles.taskListContainer} ${tasks.length > 0 ? styles.taskListContainerWithMargin : ''}`}>
             {tasks.length > 0 ? (
               tasks.map(task => (
                 <ItemList
                   key={task.id}
                   data={task}
-                  removeTask={() => handleRemove(task.id)}
-                  toggleTaskStatus={value => handleTaskCheck(task.id, value)}
+                  remove={handleRemoveTask} 
+                  taskCheck={handleToggleTask} 
                 />
               ))
             ) : (
