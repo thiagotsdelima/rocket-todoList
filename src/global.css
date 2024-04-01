@@ -33,7 +33,7 @@
 
 body {
   background-color: var(--background-600); 
-  color: var(--danger); 
+  color: var(--gray-100); 
 }
 
 body, input, textarea, button, html{

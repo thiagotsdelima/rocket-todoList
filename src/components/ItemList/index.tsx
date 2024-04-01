@@ -9,7 +9,7 @@ interface Props {
   remove: (id: number) => void;
 }
 
-export function ItemList({ data, remove, taskCheck, className }: Props) {
+export function ItemList({ data, remove, taskCheck }: Props) {
   
   function handleCheckedTasks() {
     if (typeof taskCheck === "function") {

@@ -29,13 +29,11 @@
   cursor: pointer; 
 }
 
+
 .checkbox {
   position: relative; 
   z-index: 1; 
-}
-
-
-.checkbox {
+  margin-top: -10px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -52,7 +50,7 @@
 }
 
 .checkboxUnchecked:hover {
-  background-color: rgba(30, 111, 159, 0.2);
+  background-color: rgba(30, 111, 159, 100%);
 }
 
 .checkboxChecked {
@@ -78,6 +76,7 @@
 }
 
 .container button {
+  margin-top: -10px;
   border: none;
   background-color: transparent;
   border-radius: 4px;
